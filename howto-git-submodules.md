@@ -4,7 +4,7 @@
 ## Definitions
 
 - ***submodule***
-bla bla bla.
+is a git repository included inside another git repository. It's a convenient way to manage dependency between repos.
 
 
 ## Operations
