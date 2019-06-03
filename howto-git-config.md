@@ -37,6 +37,7 @@ On client host:
 ### Useful commands
 
 Git:
+
 	git remote [-v]
 	git status [-s]
 	git branch [-v]
