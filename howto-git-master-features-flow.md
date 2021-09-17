@@ -11,7 +11,7 @@ represents a new feature development (a use-case or his sub-part). Is derived fr
 
 ## Operations
 
-### Create remote repository
+### Create remote (origin) repository
 
 On remote host:
 
@@ -38,6 +38,7 @@ On client host:
 	git add .gitignore
 	git commit -m "Add LICENSE, README and .gitignore"
 
+
 ### Add new *feature* and publish it on remote repository
 
 update local branch *master*:
@@ -45,9 +46,17 @@ update local branch *master*:
     git checkout master
 	git pull origin master
 
-create and publish new branch *feature* based on current *master*:
+create new branch *feature* based on current *master*:
 
-	git branch <feature>				
+	git branch <feature>
+    git checkout <feature>
+ 
+ or with a single command:
+
+	git chechout -b <feature>
+
+publish new branch *feature* on remote repository (origin):
+
 	git push -u origin <feature>
 
 
@@ -55,7 +64,7 @@ create and publish new branch *feature* based on current *master*:
 
 update local branch *feature*:
 
-	git chechout -b <feature>
+	git chechout <feature>
 	git pull origin <feature>
 
 add stuff to *feature* and publish it:
