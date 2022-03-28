@@ -1,4 +1,4 @@
-# Git *master/develop/features* flow
+# Git *master/develop/feature* flow
 ------------------------------------
 
 ## Definitions
@@ -14,88 +14,68 @@ represents a new feature development (a use-case or his sub-part). Is derived fr
 
 ## Operations
 
-### Create remote repository
-
-On remote host:
-
-	cd [git-repos-url]
-	mkdir <repo-name>.git
-	cd <repo-name>.git
-	git init --bare
-
-
-### Clone repository on client host
-
-On client host:
-
-	cd [git-repos-url]
-	git clone [remote-url]/<repo-name>.git
-	git config --local user.name <name>
-	git config --local user.email <email>
-
-
-### Add some *templates* to repository
-
-	git add LICENSE
-	git add README.md
-	git add .gitignore
-	git commit -m "Add LICENSE, README and .gitignore"
-
-
 ### Add *develop* branch and publish it on remote repository
 
-	git branch develop
+	git checkout -b develop
 	git push -u origin develop
 
 
-### Add new *feature* and publish it on remote repository
+### Add new *feature* and, if needed, publish it on remote repository
 
 update local branch *develop*:
 
-    git checkout -b develop
+    git checkout develop
 	git pull origin develop
 
-create and publish new branch *feature* based on current *develop*:
+create new branch *feature* based on current *develop*:
 
-	git branch <feature>				
-	git push -u origin <feature>
+	git chechout -b <feature> develop
+
+publish new branch *feature* on remote repository (origin):
+
+	git push origin <feature>
 
 
 ### Work with *feature* branch
 
-update local branch *feature*:
+update, if previously published, local branch *feature*:
 
-	git chechout -b <feature>
+	git chechout <feature>
 	git pull origin <feature>
 
-add stuff to *feature* and publish it:
+add stuff to *feature* and, if needed, publish it:
 
 	git status
 	git add <some-files>
 	git commit -m "<commit-message>"
-	git push -u origin <feature>
+	git push origin <feature>
 
 
 ### Release the completed *feature* on develop and remove it
 
-update local branches *develop* and *feature*:
+update local branch *develop* and update, if previously published, local branch *feature*:
 
 	git checkout develop
 	git pull origin develop
 	git checkout <feature>
 	git pull origin <feature>
 
-merge *feature* into *develop*:
+merge *feature* into *develop*, if possible without merge commit:
 
-	git rebase -i develop
+	git checkout develop
+	git merge <feature>
+	git push origin develop
+
+or merge *feature* into *develop*, with merge commit:
+
 	git checkout develop
 	git merge --no-ff <feature>
-	git push -u origin develop
+	git push origin develop
 
 clean local and remote branch *feature*:
 
-	git push origin --delete <feature>
 	git branch -d <feature>
+	git push origin --delete <feature>
 
 
 ### Release *develop* on *master* and tag *master* with release *version*
@@ -107,11 +87,17 @@ update local branches *master* and *develop*:
 	git checkout develop
 	git pull origin develop
 
-merge *develop* into *master*:
+merge *develop* into *master*, if possible without merge commit:
 
 	git checkout master
 	git merge develop
-	git push -u origin master
+	git push origin master
+
+or merge *develop* into *master*, with merge commit:
+
+	git checkout master
+	git merge --no-ff develop
+	git push origin master
 
 tag *master* with release *version*:
 

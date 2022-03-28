@@ -11,7 +11,6 @@ represents a new feature development (a use-case or his sub-part). Is derived fr
 
 ## Operations
 
-
 ### Add new *feature* and, if needed, publish it on remote repository
 
 update local branch *master*:
@@ -50,7 +49,7 @@ add stuff to *feature* and, if needed, publish it:
 
 ### Release the completed *feature* on master and remove it
 
-update local branches *master* and update, if previously published, local branch *feature*:
+update local branch *master* and update, if previously published, local branch *feature*:
 
 	git checkout master
 	git pull origin master
