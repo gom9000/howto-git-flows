@@ -1,4 +1,4 @@
-# Git *master/features* flow
+# Git *master/feature* flow
 ----------------------------
 
 ## Definitions
@@ -11,35 +11,8 @@ represents a new feature development (a use-case or his sub-part). Is derived fr
 
 ## Operations
 
-### Create remote (origin) repository
 
-On remote host:
-
-	cd [git-repos-url]
-	mkdir <repo-name>.git
-	cd <repo-name>.git
-	git init --bare
-
-
-### Clone repository on client host
-
-On client host:
-
-	cd [git-repos-url]
-	git clone [remote-url]/<repo-name>.git
-	git config --local user.name <name>
-	git config --local user.email <email>
-
-
-### Add some *templates* to repository
-
-	git add LICENSE
-	git add README.md
-	git add .gitignore
-	git commit -m "Add LICENSE, README and .gitignore"
-
-
-### Add new *feature* and publish it on remote repository
+### Add new *feature* and, if needed, publish it on remote repository
 
 update local branch *master*:
 
@@ -53,51 +26,56 @@ create new branch *feature* based on current *master*:
  
  or with a single command:
 
-	git chechout -b <feature>
+	git chechout -b <feature> master
 
 publish new branch *feature* on remote repository (origin):
 
-	git push -u origin <feature>
+	git push origin <feature>
 
 
 ### Work with *feature* branch
 
-update local branch *feature*:
+update, if previously published, local branch *feature*:
 
 	git chechout <feature>
 	git pull origin <feature>
 
-add stuff to *feature* and publish it:
+add stuff to *feature* and, if needed, publish it:
 
 	git status
 	git add <some-files>
 	git commit -m "<commit-message>"
-	git push -u origin <feature>
+	git push origin <feature>
 
 
 ### Release the completed *feature* on master and remove it
 
-update local branches *master* and *feature*:
+update local branches *master* and update, if previously published, local branch *feature*:
 
 	git checkout master
 	git pull origin master
 	git checkout <feature>
 	git pull origin <feature>
 
-merge *feature* into *master*:
+merge *feature* into *master*, if possible without merge commit:
 
-	git rebase -i master
+	git checkout master
+	git merge <feature>
+	git push origin master
+
+or merge *feature* into *master*, with merge commit:
+
 	git checkout master
 	git merge --no-ff <feature>
-	git push -u origin master
+	git push origin master
 
 clean local and remote branch *feature*:
 
-	git push origin --delete <feature>
 	git branch -d <feature>
+	git push origin --delete <feature>
 
 
-### Tag *master* with release *version*
+### Tag *master* with release *version* and publish it on remote repository
 
 update local branches *master*:
 
