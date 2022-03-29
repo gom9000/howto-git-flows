@@ -20,21 +20,13 @@ represent the solution to an opened production issue. After the solution the hot
 
 ## Operations
 
-### Create remote repository "*origin*"
-
-On remote host:
-
-	cd <git-repos-url>
-	git init --bare <repo-name>.git
-
-
-### Clone repository on client host
+### Clone repository on client host and init git extension *git flow*
 
 On client host:
 
 	cd <git-repos-url>
 	git clone <remote-url>/<repo-name>.git
-	cd <git-repos-url>
+	cd <git-repos-url>/<repo-name>
 	git flow init -d
 	git config --local user.name <name>
 	git config --local user.email <email>
@@ -129,9 +121,6 @@ create, work and finish the *hotfix*:
 
 ## Usefull Commands
 
-	git remote [-v]
-	git status [-s]
-	git branch [-v]
 	git flow feature list
 	git flow feature diff
 	git flow release list
