@@ -56,6 +56,14 @@ update local branch *master* and update, if previously published, local branch *
 	git checkout <feature>
 	git pull origin <feature>
 
+rebase, if needed, the *feature* commits to produce a clean history:
+
+    git rebase -i <commit-hash>
+
+rebase the *feature* on latest commits on master to maintain a linear history:
+
+    git rebase master
+
 merge *feature* into *master*, if possible without merge commit:
 
 	git checkout master

@@ -60,6 +60,14 @@ update local branch *develop* and update, if previously published, local branch 
 	git checkout <feature>
 	git pull origin <feature>
 
+rebase, if needed, the *feature* commits to produce a clean history:
+
+    git rebase -i <commit-hash>
+
+rebase the *feature* on latest commits on develop to maintain a linear history:
+
+    git rebase develop
+
 merge *feature* into *develop*, if possible without merge commit:
 
 	git checkout develop
@@ -86,6 +94,10 @@ update local branches *master* and *develop*:
 	git pull origin master
 	git checkout develop
 	git pull origin develop
+
+rebase *develop* on latest commits on master to maintain a linear history:
+
+    git rebase master
 
 merge *develop* into *master*, if possible without merge commit:
 
