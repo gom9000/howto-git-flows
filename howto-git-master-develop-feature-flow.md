@@ -29,7 +29,7 @@ update local branch *develop*:
 
 create new branch *feature* based on current *develop*:
 
-	git chechout -b <feature> develop
+	git checkout -b <feature> develop
 
 publish new branch *feature* on remote repository (origin):
 
@@ -40,7 +40,7 @@ publish new branch *feature* on remote repository (origin):
 
 update, if previously published, local branch *feature*:
 
-	git chechout <feature>
+	git checkout <feature>
 	git pull origin <feature>
 
 add stuff to *feature* and, if needed, publish it:
