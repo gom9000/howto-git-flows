@@ -14,3 +14,7 @@
 Remove any remote-tracking references that no longer exist on the remote:
 
     git fetch --prune
+
+Create a new local branch from rmote origin:
+
+    git checkout --track origin/<branch>
