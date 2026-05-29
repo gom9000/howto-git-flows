@@ -1,5 +1,8 @@
 # Git *master/develop/feature* flow
 ------------------------------------
+For software projects with a structured release cycle.<br/>
+It introduces the develop branch as an integration and testing environment for the features, protecting master which exclusively contains stable, production-ready code.
+
 
 ## Definitions
 
@@ -68,7 +71,7 @@ rebase the *feature* on latest commits on develop to maintain a linear history:
 
     git rebase develop
 	
-*Note: If the feature branch was already published, you would need "git push -f origin <feature>" to update its remote history.*
+*Note: If the feature branch was already published, you would need "git push --force-with-lease origin \<feature\>" to update its remote history.*
 
 merge *feature* into *develop*, if possible without merge commit:
 

@@ -1,12 +1,15 @@
 # Git *master/feature* flow
 ----------------------------
+For personal repositories or when working alone or in very small teams.<br/>
+This is the leanest approach: work on isolated branches for specific features, and then release directly to production on master as the feature is stable.
+
 
 ## Definitions
 
 - ***master branch***
 represents the latest production release.
 - ***feature branch***
-represents a new feature development (a use-case or its sub-part). IIt is derived from master, when finished is merged back into master and then removed.
+represents a new feature development (a use-case or its sub-part). It is derived from master, when finished is merged back into master and then removed.
 
 
 ## Operations
@@ -59,7 +62,7 @@ rebase the *feature* on latest commits on master to maintain a linear history:
 
     git rebase master
 
-*Note: If the feature branch was already published, you would need "git push -f origin <feature>" to update its remote history.*
+*Note: If the feature branch was already published, you would need "git push --force-with-lease origin \<feature\>" to update its remote history.*
 
 merge *feature* into *master*, if possible without merge commit:
 

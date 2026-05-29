@@ -1,5 +1,8 @@
 # Git Submodules
 ----------------
+When the main project depends on other independent Git repositories (e.g. core business logic, or custom frameworks).<br/>
+It allows you to embed an entire project inside another while keeping their commit histories separate.
+
 
 ## Definitions
 

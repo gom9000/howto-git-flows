@@ -1,5 +1,8 @@
 # Git-Flow
 ----------
+For complex projects, products with scheduled release cycles, and structured teams.<br/>
+It is ideal when you need to isolate and test a specific version ("Release Candidate") before deployment, while simultaneously managing production emergencies via dedicated hotfix branches.
+
 
 ## Definitions
 
