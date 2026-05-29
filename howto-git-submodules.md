@@ -18,6 +18,10 @@ is a git repository included inside another git repository. It's a convenient wa
 
 	git clone <repo-url> --recursive
 
+    # Initialize submodules if empty after clone
+	git submodule update --init --recursive
+
+
 
 ### Update submodules on a repository
 

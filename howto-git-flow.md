@@ -9,7 +9,7 @@ represents the latest production release, tagged with a version.
 represents the latest delivered development changes for the next release. Initially derived from master, then merged with the features content.
 When develop content is ready to be released, all of the changes are merged back into master and then tagged with a release version.
 - ***feature branch***
-represents a new feature development (a use-case or his sub-part). Is derived from develop, when finished is merged back into develop, and then removed.
+represents a new feature development (a use-case or its sub-part). It is derived from develop, when finished is merged back into develop, and then removed.
 - ***release branch***
 represent the "release candidate" to test and then deploy as production release.
 Is derived from develop, and after tests (QA, UAT) and version bump, the release is merged back into develop and master, and then removed.
@@ -61,7 +61,7 @@ work and publish the *feature*:
 	git status... git add... git commit...
 	git flow feature publish <feature>
 
-finish the *feature*:
+finish the *feature* (into develop):
 
 	git flow feature finish
 	git push origin
@@ -99,8 +99,11 @@ work and publish the *release*:
 finish the *release*:
 
 	git flow release finish <x.y.0>
-	git push origin develop master
+	git push origin develop
+	git push origin master
 	git push origin --tags
+
+*Note: "git push origin master" is equivalent to: "git push origin master:master"*.
 
 
 ### Work with a *hotfix*
@@ -114,28 +117,23 @@ create, work and finish the *hotfix*:
 
 	git flow hotfix start <x.y.z>
 	git status... git add... git commit...
-	git flow hotfix finish [x.y.z]
-	git push origin develop master
+	git flow hotfix finish <x.y.z>
+	git push origin develop
+	git push origin master
 	git push origin --tags
 
 
-## Usefull Commands
+## Related usefull Commands
 
 	git flow feature list
 	git flow feature diff
 	git flow release list
 	git flow hotfix list
 
-	git push origin --delete <branch-name>
-
-	set | grep -i ssh
-	ssh -l username -p port hostname
-	cat ~/.ssh/id_rsa.pub | ssh -l username -p port hostname keys add
-
 
 ## References
-* [Getting Started - Git](https://yakiloo.com/getting-started-git/)
-* [Getting Started - Git-Flow](/https://yakiloo.com/getting-started-git-flow/)
-* [Using git-flow to automate your git branching workflow](http://jeffkreeftmeijer.com/2010/why-arent-you-using-git-flow/)
-* [Learn Git](https://www.atlassian.com/git/tutorials/learn-git-with-bitbucket-cloud)
-* [Gitflow CLA](https://github.com/nvie/gitflow/wiki/Command-Line-Arguments)
+* [Yakiloo - Getting Started - Git](https://yakiloo.com/getting-started-git/)
+* [Yakiloo - Getting Started - Git-Flow](https://yakiloo.com/getting-started-git-flow/)
+* [Atlassian - Using git-flow to automate your git branching workflow](http://jeffkreeftmeijer.com/2010/why-arent-you-using-git-flow/)
+* [Atlassian - Learn Git](https://www.atlassian.com/git/tutorials/learn-git-with-bitbucket-cloud)
+* [*nvie* - Gitflow CLA](https://github.com/nvie/gitflow/wiki/Command-Line-Arguments)

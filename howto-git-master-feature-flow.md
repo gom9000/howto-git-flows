@@ -6,7 +6,7 @@
 - ***master branch***
 represents the latest production release.
 - ***feature branch***
-represents a new feature development (a use-case or his sub-part). Is derived from master, when finished is merged back into master and then removed.
+represents a new feature development (a use-case or its sub-part). IIt is derived from master, when finished is merged back into master and then removed.
 
 
 ## Operations
@@ -19,11 +19,6 @@ update local branch *master*:
 	git pull origin master
 
 create new branch *feature* based on current *master*:
-
-	git branch <feature>
-    git checkout <feature>
- 
- or with a single command:
 
 	git checkout -b <feature> master
 
@@ -56,13 +51,15 @@ update local branch *master* and update, if previously published, local branch *
 	git checkout <feature>
 	git pull origin <feature>
 
-rebase, if needed, the *feature* commits to produce a clean history:
+rebase, if needed, the *feature* commits to produce a clean history (*only if the feature branch was not already published*):
 
     git rebase -i <commit-hash>
 
 rebase the *feature* on latest commits on master to maintain a linear history:
 
     git rebase master
+
+*Note: If the feature branch was already published, you would need "git push -f origin <feature>" to update its remote history.*
 
 merge *feature* into *master*, if possible without merge commit:
 
@@ -76,20 +73,12 @@ or merge *feature* into *master*, with merge commit:
 	git merge --no-ff <feature>
 	git push origin master
 
+tag *master* with release *version*:
+
+    git tag <version>
+    git push origin --tags
+
 clean local and remote branch *feature*:
 
 	git branch -d <feature>
 	git push origin --delete <feature>
-
-
-### Tag *master* with release *version* and publish it on remote repository
-
-update local branches *master*:
-
-	git checkout master
-	git pull origin master
-
-tag *master* with release *version*:
-
-	git tag <version>
-	git push origin --tags

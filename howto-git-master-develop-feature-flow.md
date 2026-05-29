@@ -9,7 +9,7 @@ represents the latest production release, tagged with a version.
 represents the latest delivered development changes for the next release. Initially derived from master, then merged with the features content.
 When develop content is ready to be released, all of the changes are merged back into master and then tagged with a release version.
 - ***feature branch***
-represents a new feature development (a use-case or his sub-part). Is derived from develop, when finished is merged back into develop and then removed.
+represents a new feature development (a use-case or its sub-part). It is derived from develop, when finished it is merged back into develop and then removed.
 
 
 ## Operations
@@ -60,13 +60,15 @@ update local branch *develop* and update, if previously published, local branch 
 	git checkout <feature>
 	git pull origin <feature>
 
-rebase, if needed, the *feature* commits to produce a clean history:
+rebase, if needed, the *feature* commits to produce a clean history (*only if the feature branch was not already published*):
 
     git rebase -i <commit-hash>
 
 rebase the *feature* on latest commits on develop to maintain a linear history:
 
     git rebase develop
+	
+*Note: If the feature branch was already published, you would need "git push -f origin <feature>" to update its remote history.*
 
 merge *feature* into *develop*, if possible without merge commit:
 
@@ -95,10 +97,6 @@ update local branches *master* and *develop*:
 	git checkout develop
 	git pull origin develop
 
-rebase *develop* on latest commits on master to maintain a linear history:
-
-    git rebase master
-
 merge *develop* into *master*, if possible without merge commit:
 
 	git checkout master
@@ -113,5 +111,11 @@ or merge *develop* into *master*, with merge commit:
 
 tag *master* with release *version*:
 
-	git tag <version>
-	git push origin --tags
+    git tag <version>
+    git push origin --tags
+
+synch local and remote *develop* on the last merge (to include last-minute updates on master):
+
+    git checkout develop
+    git merge master
+    git push origin develop

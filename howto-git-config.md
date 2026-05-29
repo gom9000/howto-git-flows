@@ -32,27 +32,3 @@ On client host:
 
 	git config < --global | --local > user.name <name>
 	git config < --global | --local > user.email <email>
-
-
-### Useful commands
-
-Git:
-
-	git remote [-v]
-	git status [-s]
-	git branch [-v]
-	git push origin --delete [branch-name]
-
-
-SSH:
-
-	set | grep -i ssh
-	cat ~/.ssh/id_rsa.pub | ssh -l username -p port hostname keys add
-
-
-GitFlow:
-
-	git flow feature list
-	git flow feature diff
-	git flow release list
-	git flow hotfix list
